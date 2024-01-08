@@ -1,4 +1,5 @@
 /// ! Home Category 1
+// ignore: non_constant_identifier_names
 final FRUIT_CATEGORY_LIST = [
   {"image": "fruit_1.png", "title": "Apples", "price": "\$19"},
   {"image": "fruit_2.png", "title": "Clementines", "price": "\$11"},
@@ -12,6 +13,7 @@ final FRUIT_CATEGORY_LIST = [
   {"image": "fruit_10.png", "title": "Pomegranates", "price": "\$22"},
 ];
 
+// ignore: non_constant_identifier_names
 final VEGETABLES_CATEGORY_LIST = [
   {"image": "vegetable_1.png", "title": "Peppers", "price": "\$28"},
   {"image": "vegetable_2.png", "title": "Lady Finger", "price": "\$47"},
@@ -25,6 +27,7 @@ final VEGETABLES_CATEGORY_LIST = [
   {"image": "vegetable_10.png", "title": "Broccoli", "price": "\$62"},
 ];
 
+// ignore: non_constant_identifier_names
 final KITCHEN_CATEGORY_LIST = [
   {"image": "kitchen_1.png", "title": "Spoon", "price": "\$5"},
   {"image": "kitchen_2.png", "title": "Pan", "price": "\$10"},
@@ -37,6 +40,7 @@ final KITCHEN_CATEGORY_LIST = [
 
 /// ! Home Category 2
 
+// ignore: non_constant_identifier_names
 final BURGER_SPECIAL_CATEGORY_LIST = [
   {
     "image": "burger_special_1.png",
@@ -56,6 +60,7 @@ final BURGER_SPECIAL_CATEGORY_LIST = [
   {"image": "burger_special_4.png", "title": "Pizza Burger", "rating": "4.5"},
 ];
 
+// ignore: non_constant_identifier_names
 final BURGER_POPULAR_CATEGORY_LIST = [
   {"image": "burger_popular_1.png", "title": "Beef Burger", "rating": "4.9"},
   {"image": "burger_popular_2.png", "title": "EIK Burger", "rating": "3.0"},
@@ -64,6 +69,7 @@ final BURGER_POPULAR_CATEGORY_LIST = [
   {"image": "burger_popular_5.png", "title": "Bison Burger", "rating": "2.0"},
 ];
 
+// ignore: non_constant_identifier_names
 final PIZZA_SPECIAL_CATEGORY_LIST = [
   {
     "image": "pizza_special_1.png",
@@ -79,6 +85,7 @@ final PIZZA_SPECIAL_CATEGORY_LIST = [
   {"image": "pizza_special_4.png", "title": "Sicilian Pizza", "rating": "4.2"},
 ];
 
+// ignore: non_constant_identifier_names
 final PIZZA_POPULAR_CATEGORY_LIST = [
   {"image": "pizza_popular_1.png", "title": "Greek Pizza", "rating": "4.2"},
   {
@@ -91,6 +98,7 @@ final PIZZA_POPULAR_CATEGORY_LIST = [
   {"image": "pizza_popular_5.png", "title": "Meat Pizza", "rating": "5.0"},
 ];
 
+// ignore: non_constant_identifier_names
 final SANDWICH_SPECIAL_CATEGORY_LIST = [
   {
     "image": "sandwich_special_1.png",
@@ -110,6 +118,7 @@ final SANDWICH_SPECIAL_CATEGORY_LIST = [
   },
 ];
 
+// ignore: non_constant_identifier_names
 final SANDWICH_POPULAR_CATEGORY_LIST = [
   {
     "image": "sandwich_popular_1.png",
@@ -132,6 +141,7 @@ final SANDWICH_POPULAR_CATEGORY_LIST = [
 
 /// ! Food prime search data
 
+// ignore: non_constant_identifier_names
 final SEARCH_FOOD_PRIME_DATA = [
   {"image": "fruit_1.png", "title": "Apples", "price": "\$19"},
   {"image": "fruit_2.png", "title": "Clementines", "price": "\$11"},

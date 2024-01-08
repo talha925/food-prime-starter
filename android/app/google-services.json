@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "782688760209",
+    "project_id": "food-prime-app-622f7",
+    "storage_bucket": "food-prime-app-622f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:782688760209:android:84ce69033b4d5370fdaa30",
+        "android_client_info": {
+          "package_name": "com.example.food_prime_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdMWW_FMseLqnal-IXdb2AtoLcdRXW3vg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

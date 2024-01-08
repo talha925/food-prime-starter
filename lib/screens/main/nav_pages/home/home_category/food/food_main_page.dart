@@ -467,7 +467,7 @@ class _FoodMainPageState extends State<FoodMainPage> {
                           child: Text(
                             "${burger['title']}",
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -550,7 +550,7 @@ class _FoodMainPageState extends State<FoodMainPage> {
                           child: Text(
                             "${pizza['title']}",
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -633,7 +633,7 @@ class _FoodMainPageState extends State<FoodMainPage> {
                           child: Text(
                             "${sandwich['title']}",
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),

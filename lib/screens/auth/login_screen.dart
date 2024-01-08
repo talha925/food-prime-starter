@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:food_prime_app/screens/auth/signup_screen.dart';
+import 'package:food_prime_app/screens/auth/auth_service/auth_service.dart';
 import 'package:food_prime_app/theme/style.dart';
 import 'package:food_prime_app/widget/button_container_widget.dart';
 
+import '../../util/error_notify.dart';
 import '../../widget/form_container_widget.dart';
-import '../premimum/premium_screen.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final VoidCallback? showSignUpPage;
+
+  const LoginPage({super.key, this.showSignUpPage});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final emailcontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
   bool _rememberMeCheckValue = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,32 +47,40 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                const FormContainerWidget(hintText: "Email or Username"),
+                FormContainerWidget(
+                  hintText: "Email or Username",
+                  controller: emailcontroller,
+                ),
                 const SizedBox(
                   height: 20,
                 ),
-                const FormContainerWidget(hintText: "Password"),
+                FormContainerWidget(
+                  hintText: "Password",
+                  controller: passwordcontroller,
+                ),
                 const SizedBox(
                   height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        Checkbox(
-                          onChanged: (value) {
-                            setState(() {
-                              _rememberMeCheckValue = value!;
-                            });
-                          },
-                          value: _rememberMeCheckValue,
-                        ),
-                        const Text(
-                          "Remember me",
-                          style: TextStyle(fontSize: 15),
-                        )
-                      ],
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Checkbox(
+                            onChanged: (value) {
+                              setState(() {
+                                _rememberMeCheckValue = value!;
+                              });
+                            },
+                            value: _rememberMeCheckValue,
+                          ),
+                          const Text(
+                            "Remember me",
+                            style: TextStyle(fontSize: 15),
+                          )
+                        ],
+                      ),
                     ),
                     const Text(
                       "Forget Password",
@@ -81,11 +94,28 @@ class _LoginPageState extends State<LoginPage> {
                 ButtonContainerWidget(
                   title: "Log In",
                   onTap: () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => const PremiumScreen()),
-                        (route) => false);
+                    // Navigator.pushAndRemoveUntil(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (_) => const PremiumScreen()),
+                    //     (route) => false);
+
+                    if (emailcontroller.text.isEmpty) {
+                      Message.toastMessage(
+                        'Please enter email',
+                      );
+                    } else if (passwordcontroller.text.isEmpty) {
+                      Message.toastMessage(
+                        'Please enter password',
+                      );
+                    } else if (passwordcontroller.text.length < 6) {
+                      Message.toastMessage(
+                        'Please enter 6 digit password',
+                      );
+                    } else {
+                      AuthServices().signIn(emailcontroller.text.trim(),
+                          passwordcontroller.text.trim());
+                    }
                   },
                 ),
                 const SizedBox(
@@ -145,10 +175,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               GestureDetector(
                   onTap: () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (_) => SignUpPage()),
-                        (route) => false);
+                    widget.showSignUpPage!();
+                    // print("object");
                   },
                   child: const Text(
                     "Create account",

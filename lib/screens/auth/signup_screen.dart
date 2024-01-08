@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:food_prime_app/screens/auth/auth_service/auth_service.dart';
 import 'package:food_prime_app/screens/auth/login_screen.dart';
 import 'package:food_prime_app/theme/style.dart';
 import 'package:food_prime_app/widget/button_container_widget.dart';
 
 import '../../widget/form_container_widget.dart';
-import '../premimum/premium_screen.dart';
 
 class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+  final VoidCallback showLoginPage;
+
+  const SignUpPage({super.key, required this.showLoginPage});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -15,6 +17,12 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   bool _rememberMeCheckValue = false;
+  final emailcontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
+  final confirmpasswordcontroller = TextEditingController();
+  final lastNamecontroller = TextEditingController();
+  final firstNamecontroller = TextEditingController();
+  final agecontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,11 +102,17 @@ class _SignUpPageState extends State<SignUpPage> {
                 ButtonContainerWidget(
                   title: "Sign Up",
                   onTap: () {
-                    Navigator.pushAndRemoveUntil(
+                    // Navigator.pushAndRemoveUntil(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (_) => const PremiumScreen()),
+                    //     (route) => false);
+
+                    AuthServices().signUp(
                         context,
-                        MaterialPageRoute(
-                            builder: (_) => const PremiumScreen()),
-                        (route) => false);
+                        emailcontroller.text.trim(),
+                        passwordcontroller.text.trim(),
+                        confirmpasswordcontroller.text.trim());
                   },
                 ),
                 const SizedBox(

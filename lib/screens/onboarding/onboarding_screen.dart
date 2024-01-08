@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_prime_app/screens/auth/login_screen.dart';
+import 'package:food_prime_app/screens/auth/auth_pages/main_page.dart';
 import 'package:food_prime_app/screens/onboarding/onboarding_entity.dart';
 import 'package:food_prime_app/theme/style.dart';
 import 'package:food_prime_app/widget/button_container_widget.dart';
@@ -87,7 +87,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                 Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => LoginPage()),
+                                        builder: (context) => const MainPage()),
                                     (route) => false);
                               },
                             ),

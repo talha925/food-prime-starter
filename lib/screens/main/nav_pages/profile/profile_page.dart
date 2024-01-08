@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_prime_app/theme/style.dart';
+
+import '../../../auth/auth_pages/auth_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -13,7 +16,13 @@ class ProfilePage extends StatelessWidget {
         title: Image.asset("assets/word_app_logo.png"),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => const AuthPage()),
+                );
+              },
               icon: const Icon(
                 Icons.settings,
                 color: Colors.black,
@@ -69,6 +78,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
+// setting item widget
   _settingsItem({String? title, IconData? prefixIcon}) {
     return Container(
       width: double.infinity,

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_prime_app/theme/style.dart';
+import 'package:food_prime_app/screens/premimum/premium_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../../theme/style.dart';
+import '../auth/auth_pages/auth_page.dart';
 
 class SplashScreen extends StatefulWidget {
   final Widget child;
@@ -12,12 +16,30 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(milliseconds: 3000)).then((value) =>
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => widget.child),
-            (route) => false));
     super.initState();
+    _navigateToCorrectScreen();
+  }
+
+  void _navigateToCorrectScreen() async {
+    await Future.delayed(const Duration(milliseconds: 3000));
+
+    // Check if the user is authenticated
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      // User is authenticated, navigate to PremiumScreen
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const PremiumScreen()),
+        (route) => false,
+      );
+    } else {
+      // User is not authenticated, navigate to AuthPage
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const AuthPage()),
+        (route) => false,
+      );
+    }
   }
 
   @override
