@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:food_prime_app/model/cart_item.dart';
 
-import '../../../../../../theme/style.dart';
 import '../../../../../../widget/button_container_widget.dart';
+import '../../../cart/cart_page.dart';
 
 class DetailPage extends StatefulWidget {
   final Map<String, String> data;
-  const DetailPage({super.key, required this.data});
+  final List<CartItem> cart;
+
+  const DetailPage({Key? key, required this.data, required this.cart})
+      : super(key: key);
 
   @override
   State<DetailPage> createState() => DetailPageState();
@@ -13,12 +17,13 @@ class DetailPage extends StatefulWidget {
 
 class DetailPageState extends State<DetailPage> {
   int _quantity = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: _bottomWidget(),
       appBar: AppBar(
-        backgroundColor: whiteColor,
+        backgroundColor: Colors.white,
         leading: GestureDetector(
           onTap: () => Navigator.pop(context),
           child: const Icon(
@@ -80,7 +85,7 @@ class DetailPageState extends State<DetailPage> {
             ),
             const Row(
               children: [
-                Icon(Icons.calendar_today, color: primaryColorED6E1B),
+                Icon(Icons.calendar_today, color: Colors.amber),
                 SizedBox(
                   width: 10,
                 ),
@@ -92,7 +97,7 @@ class DetailPageState extends State<DetailPage> {
             ),
             const Row(
               children: [
-                Icon(Icons.location_on, color: primaryColorED6E1B),
+                Icon(Icons.location_on, color: Colors.amber),
                 SizedBox(
                   width: 10,
                 ),
@@ -105,7 +110,6 @@ class DetailPageState extends State<DetailPage> {
     );
   }
 
-//_selectQuantityWidget
   _selectQuantityWidget() {
     return Center(
       child: Container(
@@ -114,7 +118,7 @@ class DetailPageState extends State<DetailPage> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: lightGreyColor,
+            color: Colors.grey[300],
             boxShadow: [
               BoxShadow(
                   offset: const Offset(0, 3),
@@ -134,12 +138,11 @@ class DetailPageState extends State<DetailPage> {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                  color: primaryColorED6E1B,
-                  borderRadius: BorderRadius.circular(2)),
+                  color: Colors.amber, borderRadius: BorderRadius.circular(2)),
               child: Center(
                 child: Text(
                   "$_quantity",
-                  style: const TextStyle(fontSize: 15, color: whiteColor),
+                  style: const TextStyle(fontSize: 15, color: Colors.white),
                 ),
               ),
             ),
@@ -168,21 +171,24 @@ class DetailPageState extends State<DetailPage> {
     });
   }
 
-//bottom widget
   _bottomWidget() {
     return Container(
       height: 100,
       decoration: BoxDecoration(
-          color: whiteColor,
-          borderRadius: const BorderRadius.only(
-              topRight: Radius.circular(30), topLeft: Radius.circular(30)),
-          boxShadow: [
-            BoxShadow(
-                offset: const Offset(5, -2),
-                color: Colors.grey[300]!,
-                spreadRadius: 1.5,
-                blurRadius: 10)
-          ]),
+        color: Colors.white,
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(30),
+          topLeft: Radius.circular(30),
+        ),
+        boxShadow: [
+          BoxShadow(
+            offset: const Offset(5, -2),
+            color: Colors.grey[300]!,
+            spreadRadius: 1.5,
+            blurRadius: 10,
+          )
+        ],
+      ),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
         child: Row(
@@ -197,11 +203,40 @@ class DetailPageState extends State<DetailPage> {
               height: 40,
               title: "Add to cart",
               onTap: () {
+                // Add the selected item to the cart
+                CartItem newItem = CartItem(
+                  title: widget.data['title']!,
+                  image: widget.data['image']!,
+                  price: 123.0, // Update with the actual price
+                  quantity: _quantity,
+                );
+
+                // Check if the item is already in the cart
+                bool itemExistsInCart =
+                    widget.cart.any((item) => item.title == newItem.title);
+
+                // If the item is not in the cart, add it; otherwise, update the quantity
+                if (!itemExistsInCart) {
+                  widget.cart.add(newItem);
+                } else {
+                  CartItem existingItem = widget.cart
+                      .firstWhere((item) => item.title == newItem.title);
+                  existingItem.quantity += _quantity;
+                }
+
                 ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("Item added in cart")));
-                Navigator.pop(context);
+                  const SnackBar(content: Text("Item added to cart")),
+                );
+
+                // Navigate to CartPage with the updated cart
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CartPage(cart: widget.cart),
+                  ),
+                );
               },
-            )
+            ),
           ],
         ),
       ),

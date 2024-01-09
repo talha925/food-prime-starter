@@ -173,7 +173,10 @@ class _GroceryAndFruitMainPageState extends State<GroceryAndFruitMainPage> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DetailPage(data: fruit)));
+                    builder: (context) => DetailPage(
+                          data: fruit,
+                          cart: [],
+                        )));
           },
           child: Column(
             children: [
@@ -225,7 +228,10 @@ class _GroceryAndFruitMainPageState extends State<GroceryAndFruitMainPage> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DetailPage(data: vegetable)));
+                    builder: (context) => DetailPage(
+                          data: vegetable,
+                          cart: [],
+                        )));
           },
           child: Column(
             children: [
@@ -277,7 +283,10 @@ class _GroceryAndFruitMainPageState extends State<GroceryAndFruitMainPage> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DetailPage(data: kitchen)));
+                    builder: (context) => DetailPage(
+                          data: kitchen,
+                          cart: [],
+                        )));
           },
           child: Column(
             children: [

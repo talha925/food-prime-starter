@@ -75,8 +75,13 @@ class _SearchPageState extends State<SearchPage> {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (_) => DetailPage(data: data)));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => DetailPage(
+                          data: data,
+                          cart: [],
+                        )));
           },
           child: Row(
             children: [

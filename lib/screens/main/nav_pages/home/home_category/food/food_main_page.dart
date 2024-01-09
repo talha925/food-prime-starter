@@ -193,7 +193,10 @@ class _FoodMainPageState extends State<FoodMainPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => DetailPage(data: specialBurger)));
+                      builder: (context) => DetailPage(
+                            data: specialBurger,
+                            cart: [],
+                          )));
             },
             child: SizedBox(
               width: 300,
@@ -263,7 +266,10 @@ class _FoodMainPageState extends State<FoodMainPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => DetailPage(data: pizza)));
+                      builder: (context) => DetailPage(
+                            data: pizza,
+                            cart: [],
+                          )));
             },
             child: SizedBox(
               width: 300,
@@ -333,7 +339,10 @@ class _FoodMainPageState extends State<FoodMainPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => DetailPage(data: sandwich)));
+                      builder: (context) => DetailPage(
+                            data: sandwich,
+                            cart: [],
+                          )));
             },
             child: SizedBox(
               width: 300,
@@ -422,7 +431,10 @@ class _FoodMainPageState extends State<FoodMainPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => DetailPage(data: burger)));
+                      builder: (context) => DetailPage(
+                            data: burger,
+                            cart: [],
+                          )));
             },
             child: SizedBox(
               width: 180,
@@ -505,7 +517,10 @@ class _FoodMainPageState extends State<FoodMainPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => DetailPage(data: pizza)));
+                      builder: (context) => DetailPage(
+                            data: pizza,
+                            cart: [],
+                          )));
             },
             child: SizedBox(
               width: 180,
@@ -588,7 +603,10 @@ class _FoodMainPageState extends State<FoodMainPage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => DetailPage(data: sandwich)));
+                      builder: (context) => DetailPage(
+                            data: sandwich,
+                            cart: [],
+                          )));
             },
             child: SizedBox(
               width: 180,
